@@ -10,32 +10,32 @@ export interface BubbleHandlerOffsetInterface {
  */
 export class BubbleHandler {
 
-  public element: HTMLElement
+  public element: HTMLElement;
 
-  private center: {x: number, y: number}
-  private width: number
-  private height: number
-  private expansion = 10
-  private delta: number
+  private center: { x: number, y: number };
+  private width: number;
+  private height: number;
+  private expansion = 10;
+  private delta: number;
 
-  constructor (element: HTMLElement, delta) {
-    this.element = element
-    element.style.margin = `${this.expansion / 2}px`
-    this.setPosition(element)
-    this.delta = delta
+  constructor(element: HTMLElement, delta) {
+    this.element = element;
+    element.style.margin = `${this.expansion / 2}px`;
+    this.setPosition(element);
+    this.delta = delta;
     window.addEventListener('resize', () => {
       this.setPosition(element)
     })
   }
 
-  public setPosition (element: HTMLElement) {
+  public setPosition(element: HTMLElement) {
     let rect = element.getBoundingClientRect()
     this.center = {
       x: rect.left + window.scrollX + rect.width / 2,
       y: rect.top + window.scrollY + rect.height / 2
-    }
-    this.width = rect.width
-    this.height = rect.height
+    };
+    this.width = rect.width;
+    this.height = rect.height;
   }
 
   /**
@@ -53,7 +53,7 @@ export class BubbleHandler {
   /**
    * Shrink animation
    */
-  public shrink () {
+  public shrink() {
     dynamics.animate(
       this.element,
       {
@@ -71,7 +71,7 @@ export class BubbleHandler {
   /**
    * Expand animation
    */
-  public expand () {
+  public expand() {
     dynamics.animate(
       this.element,
       {
@@ -85,5 +85,4 @@ export class BubbleHandler {
       }
     )
   }
-
 }

@@ -7,12 +7,17 @@ import { Bubble } from 'app/bubble';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  private bubbles: Bubble[] = [];
   constructor() { }
 
   ngOnInit() {
-    let bubbles = window.document.querySelectorAll('.bubble')
-    Array.from(bubbles).forEach(function (bubble) {
-      new Bubble(bubble);
-    })
+    let selectedBubbles = window.document.querySelectorAll('.bubble');
+    for (let i = 0; selectedBubbles[i]; i++) {
+      console.log('create bubble..');
+      let bubble: Bubble = new Bubble(selectedBubbles[i] as HTMLElement);
+      this.bubbles.push(bubble);
+      console.log(bubble);
+    }
+    window.dispatchEvent(new Event('resize'));
   }
 }

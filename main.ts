@@ -20,8 +20,12 @@ function createWindow() {
   win = new BrowserWindow({
     x: 0,
     y: 0,
-    width: size.width,
-    height: size.height
+    title: 'Neon',
+    width: 1200, //size.width,
+    height: 900, //size.height,
+    transparent: true,
+    backgroundColor: '#80FFFFFF',
+    titleBarStyle: 'hidden-inset'
   });
 
   // and load the index.html of the app.
@@ -33,7 +37,7 @@ function createWindow() {
 
   // Open the DevTools.
   if (serve) {
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
   }
 
   // Emitted when the window is closed.
